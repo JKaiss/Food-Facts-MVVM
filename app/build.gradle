@@ -22,17 +22,28 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
 }
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
   implementation "com.android.support.constraint:constraint-layout:${libs.constraintLayout}"
+  implementation 'com.android.support:support-v4:23.4.0'
+
+  // tests
   testImplementation "junit:junit:${libs.jUnitVersion}"
   androidTestImplementation "com.android.support.test:runner:${libs.runner}"
   androidTestImplementation "com.android.support.test.espresso:espresso-core:${libs.espresso}"
+
+  // Dagger
+  compile "com.google.dagger:dagger:${libs.dagger}"
+  annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+
+  // Retrofit
+  compile "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+  compile "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+
+  // Lifecycle
+  compile "android.arch.lifecycle:extensions:${libs.archVersion}"
+  annotationProcessor "android.arch.lifecycle:compiler:${libs.archVersion}"
 }

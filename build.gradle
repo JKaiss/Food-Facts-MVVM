@@ -3,7 +3,7 @@
 ext {
   configuration = [package          : "com.jaafoura.foodfacts",
                    buildToolsVersion: "26.0.2",
-                   compileVersion   : 23,
+                   compileVersion   : 26,
                    minSdk           : 14,
                    targetSdk        : 23,
                    version_code     : 1,
