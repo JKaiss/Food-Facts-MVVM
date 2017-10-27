@@ -39,8 +39,7 @@ public class DetailsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     this.activityDetailsBinding =
         DataBindingUtil.setContentView(this, R.layout.activity_details);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+    setSupportActionBar(activityDetailsBinding.toolbar);
   }
 
   @Override

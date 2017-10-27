@@ -30,12 +30,12 @@
     </activity>
     <activity
       android:label="@string/title_activity_details"
-
       android:name=".view.activities.DetailsActivity"
       android:screenOrientation="landscape"
       android:theme="@style/AppTheme" />
     <activity
       android:name=".view.activities.HistoryActivity"
+      android:label="@string/title_activity_history"
       android:screenOrientation="landscape"></activity>
   </application>
 
