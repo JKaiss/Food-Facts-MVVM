@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import com.jaafoura.foodfacts.R;
 import com.jaafoura.foodfacts.dagger.AppComponent;
 import com.jaafoura.foodfacts.data.ProductDB;
@@ -14,6 +15,7 @@ import com.jaafoura.foodfacts.databinding.ActivityHistoryBinding;
 import com.jaafoura.foodfacts.view.adapters.ProductAdapter;
 import com.jaafoura.foodfacts.view.adapters.ProductAdapter.OnItemClickListener;
 import com.jaafoura.foodfacts.viewmodel.HistoryViewModel;
+import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -35,6 +37,8 @@ public class HistoryActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     this.activityHistoryBinding =
         DataBindingUtil.setContentView(this, R.layout.activity_history);
+
+    setSupportActionBar(activityHistoryBinding.toolbar);
     AppComponent.from(this).inject(this);
 
     mProductAdapter = new ProductAdapter(new OnItemClickListener() {
@@ -50,6 +54,8 @@ public class HistoryActivity extends AppCompatActivity {
     historyViewModel.getProducts(this).observe(this, new Observer<List<ProductDB>>() {
       @Override
       public void onChanged(@Nullable List<ProductDB> productDBS) {
+        // Reverse list to get recent at the top
+        Collections.reverse(productDBS);
         mProductAdapter.setRepos(productDBS);
       }
     });
