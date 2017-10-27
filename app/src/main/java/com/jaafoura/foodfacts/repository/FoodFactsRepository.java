@@ -1,6 +1,7 @@
 package com.jaafoura.foodfacts.repository;
 
 import android.arch.lifecycle.LiveData;
+import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.model.Product;
 import org.w3c.dom.Entity;
 
@@ -9,5 +10,6 @@ import org.w3c.dom.Entity;
  */
 
 public interface FoodFactsRepository {
-  LiveData<Product> getProduct(long codeBare);
+
+  LiveData<ProductDB> getProduct(String codeBare);
 }

@@ -13,6 +13,7 @@ public interface FoodFactsApi {
 
   String baseURL = "https://world.openfoodfacts.org/api/v0/product/";
 
-  @GET("/{barcodeNumber}.json") Call<ResponseEntity> getProduct(@Path("barcodeNumber") long codeBare);
+  @GET("{barcodeNumber}.json")
+  Call<ResponseEntity> getProduct(@Path("barcodeNumber") String codeBare);
 
 }

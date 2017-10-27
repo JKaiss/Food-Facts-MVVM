@@ -7,7 +7,10 @@ import com.jaafoura.foodfacts.view.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  // region Life cycle
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
@@ -15,4 +18,6 @@ public class MainActivity extends AppCompatActivity {
         .replace(R.id.container, MainFragment.newInstance())
         .commit();
   }
+
+  // endregion
 }

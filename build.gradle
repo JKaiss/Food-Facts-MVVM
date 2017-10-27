@@ -1,55 +1,58 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 ext {
-  configuration = [package          : "com.jaafoura.foodfacts",
-                   buildToolsVersion: "26.0.2",
-                   compileVersion   : 26,
-                   minSdk           : 14,
-                   targetSdk        : 23,
-                   version_code     : 1,
-                   version_name     : "1.0"]
+    configuration = [package          : "com.jaafoura.foodfacts",
+                     buildToolsVersion: "26.0.2",
+                     compileVersion   : 26,
+                     minSdk           : 14,
+                     targetSdk        : 23,
+                     version_code     : 1,
+                     version_name     : "1.0"]
 
-  libraries = [supportVersion  : "26.1.0",
-               butterknife     : "8.5.1",
-               calligraphy     : "2.2.0",
-               retrofit        : "2.3.0",
-               interceptor     : "3.2.0",
-               dagger          : "2.10",
-               espresso        : "3.0.1",
-               runner          : "1.0.1",
-               jUnitVersion    : "4.12",
-               constraintLayout: "1.0.2",
-               mockitoVersion  : "2.0.5-beta",
-               archVersion     : "1.0.0-alpha1"]
+    libraries = [supportVersion      : "26.1.0",
+                 butterknife         : "8.5.1",
+                 calligraphy         : "2.2.0",
+                 retrofit            : "2.3.0",
+                 interceptor         : "3.2.0",
+                 dagger              : "2.10",
+                 espresso            : "3.0.1",
+                 runner              : "1.0.1",
+                 jUnitVersion        : "4.12",
+                 constraintLayout    : "1.0.2",
+                 mockitoVersion      : "2.0.5-beta",
+                 archVersion         : "1.0.0-rc1",
+                 roomLifecycleVersion: "1.0.0-rc1"]
 
-  keystore = [keyPassword  : "",
-              storePassword: "",
-              alias        : "",
-              path         : ""]
+    keystore = [keyPassword  : "",
+                storePassword: "",
+                alias        : "",
+                path         : ""]
 }
 
 buildscript {
 
-  repositories {
-    google()
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0-rc2'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-rc2'
 
-
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
-  }
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
 }
 
 allprojects {
-  repositories {
-    google()
-    jcenter()
-  }
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
 }
 
 task clean(type: Delete) {
-  delete rootProject.buildDir
+    delete rootProject.buildDir
 }

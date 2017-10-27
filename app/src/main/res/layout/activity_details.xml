@@ -1,33 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context="com.jaafoura.foodfacts.view.activities.DetailsActivity">
+  xmlns:tools="http://schemas.android.com/tools">
 
-  <android.support.design.widget.AppBarLayout
+  <data>
+    <variable
+      name="product"
+      type="com.jaafoura.foodfacts.data.ProductDB" />
+
+  </data>
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/AppTheme.AppBarOverlay">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jaafoura.foodfacts.view.activities.DetailsActivity">
 
-    <android.support.v7.widget.Toolbar
-      android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout
       android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:background="?attr/colorPrimary"
-      app:popupTheme="@style/AppTheme.PopupOverlay" />
+      android:layout_height="wrap_content"
+      android:theme="@style/AppTheme.AppBarOverlay">
 
-  </android.support.design.widget.AppBarLayout>
+      <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-  <include layout="@layout/content_details" />
+    </android.support.design.widget.AppBarLayout>
 
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/fab_margin"
-    android:layout_gravity="bottom|end"
-    app:srcCompat="@android:drawable/ic_dialog_email" />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:fillViewport="true">
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/linear_padding"
+        android:orientation="horizontal">
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:orientation="vertical">
 
-</android.support.design.widget.CoordinatorLayout>
+          <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_background"
+            app:imageUrl="@{product.imageUrl}" />
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{product.productNameFr}" />
+        </LinearLayout>
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:padding="@dimen/linear_padding"
+          android:orientation="vertical">
+
+          <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Ingredients : ` + product.ingredientsText}" />
+          <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{product.energy == null ? ` pas de données sur le nombre de calories` : product.energy + ` Kcal`}" />
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+    </ScrollView>
+
+  </LinearLayout>
+
+</layout>

@@ -6,44 +6,63 @@ def libs = rootProject.ext.libraries
 def key = rootProject.ext.keystore
 
 android {
-  compileSdkVersion cfg.compileVersion
-  buildToolsVersion cfg.buildToolsVersion
-  defaultConfig {
-    applicationId cfg.package
-    minSdkVersion cfg.minSdk
-    targetSdkVersion cfg.targetSdk
-    versionCode cfg.version_code
-    versionName cfg.version_name
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
+    defaultConfig {
+        applicationId cfg.package
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.version_code
+        versionName cfg.version_name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-  }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true;
+    }
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
-  implementation "com.android.support.constraint:constraint-layout:${libs.constraintLayout}"
-  implementation 'com.android.support:support-v4:23.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${libs.constraintLayout}"
+    implementation 'com.android.support:support-v4:23.4.0'
 
-  // tests
-  testImplementation "junit:junit:${libs.jUnitVersion}"
-  androidTestImplementation "com.android.support.test:runner:${libs.runner}"
-  androidTestImplementation "com.android.support.test.espresso:espresso-core:${libs.espresso}"
+    // tests
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation "junit:junit:${libs.jUnitVersion}"
+    androidTestImplementation "com.android.support.test:runner:${libs.runner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${libs.espresso}"
 
-  // Dagger
-  compile "com.google.dagger:dagger:${libs.dagger}"
-  annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+    // Dagger
+    compile "com.google.dagger:dagger:${libs.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
 
-  // Retrofit
-  compile "com.squareup.retrofit2:retrofit:${libs.retrofit}"
-  compile "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    // Retrofit
+    compile "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    compile "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
 
-  // Lifecycle
-  compile "android.arch.lifecycle:extensions:${libs.archVersion}"
-  annotationProcessor "android.arch.lifecycle:compiler:${libs.archVersion}"
+    // Okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    // Floating SearchView
+    compile 'com.github.arimorty:floatingsearchview:2.1.1'
+
+    // Lifecycle
+    compile "android.arch.lifecycle:extensions:${libs.archVersion}"
+    annotationProcessor "android.arch.lifecycle:compiler:${libs.archVersion}"
+
+    // Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Persistance Room
+    compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
+    compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$libs.roomLifecycleVersion"
 }
