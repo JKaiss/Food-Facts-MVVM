@@ -52,11 +52,16 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_background"
             app:imageUrl="@{product.imageUrl}" />
+
           <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/detail_name_text_margin_top"
             android:gravity="center"
-            android:text="@{product.productNameFr}" />
+            android:text="@{product.productNameFr}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/detail_name_text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -70,12 +75,17 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{`Ingredients : ` + product.ingredientsText}" />
+            android:text="@{`Ingredients : ` + product.ingredientsText}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/detail_ingredient_text" />
           <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{product.energy == null ? ` pas de données sur le nombre de calories` : product.energy + ` Kcal`}" />
+            android:layout_marginTop="@dimen/margin_text"
+            android:text="@{product.energy == null ? ` Energie : ` +` pas de données sur le nombre de calories` : ` Energie : ` + product.energy + ` Kcal`}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/detail_kcal_text" />
 
         </LinearLayout>
 
