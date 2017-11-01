@@ -6,4 +6,9 @@
   <dimen name="linear_padding">8dp</dimen>
   <dimen name="cardview_height">120dp</dimen>
   <dimen name="padding_item">8dp</dimen>
+  <dimen name="detail_ingredient_text">18sp</dimen>
+  <dimen name="detail_kcal_text">18sp</dimen>
+  <dimen name="margin_text">24dp</dimen>
+  <dimen name="detail_name_text">24sp</dimen>
+  <dimen name="detail_name_text_margin_top">16dp</dimen>
 </resources>
