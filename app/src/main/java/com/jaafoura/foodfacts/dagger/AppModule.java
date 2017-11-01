@@ -1,6 +1,8 @@
 package com.jaafoura.foodfacts.dagger;
 
 import android.app.Application;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jaafoura.foodfacts.data.mappers.ProductMapper;
 import com.jaafoura.foodfacts.network.FoodFactsApi;
 import com.jaafoura.foodfacts.repository.FoodFactsRepository;
@@ -25,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class AppModule {
 
-  private static final long TIME_OUT = 30000;
+  private static final long TIME_OUT = 10000;
   private final Application application;
 
   public AppModule(Application application) {
@@ -37,27 +39,39 @@ public class AppModule {
   public FoodFactsApi providesFoodFactsApi() {
     return new Retrofit.Builder().baseUrl(FoodFactsApi.baseURL)
         .client(createClient())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(getGsonViaBuilder()))
         .build()
         .create(FoodFactsApi.class);
+  }
+
+  private static Gson getGsonViaBuilder() {
+    return new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
   }
 
   private OkHttpClient createClient() {
 
     ConnectionSpec spec =
-        new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS).tlsVersions(TlsVersion.TLS_1_2)
-            .cipherSuites(CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+        new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+            .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1,
+                TlsVersion.TLS_1_0) // add tls version 1.1 and 1.0
+            .cipherSuites(
+                // Android 5.0
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
                 CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
                 CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+                // Android 4.4
                 CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
                 CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
                 CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
                 CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
-                CipherSuite.TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,
-                CipherSuite.TLS_ECDHE_RSA_WITH_RC4_128_SHA,
                 CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
                 CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA,
-                CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA)
+                CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+                CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA,
+                CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA,
+                CipherSuite.TLS_RSA_WITH_3DES_EDE_CBC_SHA
+            )
             .build();
     HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
     logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -68,8 +82,10 @@ public class AppModule {
     b.addInterceptor(logging);
     b.connectionSpecs(Collections.singletonList(spec));
     OkHttpClient okHttpClient = b.build();
+
     return okHttpClient;
   }
+
 
   @Provides
   @Singleton
