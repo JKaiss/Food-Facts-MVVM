@@ -52,8 +52,7 @@ public class AppModule {
 
     ConnectionSpec spec =
         new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-            .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1,
-                TlsVersion.TLS_1_0) // add tls version 1.1 and 1.0
+            .tlsVersions(TlsVersion.TLS_1_0) // add tls version 1.1 and 1.0
             .cipherSuites(
                 // Android 5.0
                 CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
