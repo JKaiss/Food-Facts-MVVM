@@ -29,10 +29,12 @@ public class ProductMapper extends BaseDataMapper<Product, ProductDB> {
         && sourceObject.getCode() != null
         && sourceObject.getImageUrl() != null
         && sourceObject.getIngredientsText() != null
-        && sourceObject.getProductNameFr() != null
+        && (sourceObject.getProductNameFr() != null || sourceObject.getProductNameEn() != null)
         && sourceObject.getNutriments() != null) {
       return new ProductDB(sourceObject.getCode(), sourceObject.getImageUrl(),
-          sourceObject.getIngredientsText(), sourceObject.getProductNameFr(),
+          sourceObject.getIngredientsText(),
+          sourceObject.getProductNameFr().isEmpty() ? sourceObject.getProductNameEn()
+              : sourceObject.getProductNameFr(), // If fr name is empty set the En name
           sourceObject.getNutriments().getEnergy100g());
     } else {
       return null;
