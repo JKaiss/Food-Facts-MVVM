@@ -2,6 +2,7 @@ package com.jaafoura.foodfacts.data;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 /**
  * Created by kjaafoura on 26/10/2017.
@@ -10,9 +11,9 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class ProductDB {
 
-  @PrimaryKey(autoGenerate = true)
-  private int id;
 
+  @NonNull
+  @PrimaryKey
   String code;
   String imageUrl;
   String ingredientsText;
@@ -66,13 +67,5 @@ public class ProductDB {
 
   public void setEnergy(String energy) {
     this.energy = energy;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
   }
 }
