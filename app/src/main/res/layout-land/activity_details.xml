@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/detail_name_text_margin_top"
             android:gravity="center"
-            android:text="@{product.productNameFr}"
+            android:text="@{product.productNameFr == null ? `Nom de produit non disponible` : product.productNameFr}"
             android:textColor="@color/black"
             android:textSize="@dimen/detail_name_text" />
 
@@ -75,7 +75,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{`Ingredients : ` + product.ingredientsText}"
+            android:text="@{product.ingredientsText == null ? `Ingredients : non diponibles`:`Ingredients : ` + product.ingredientsText}"
             android:textColor="@color/black"
             android:textSize="@dimen/detail_ingredient_text" />
           <TextView
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_text"
-            android:text="@{product.energy == null ? ` Energie : ` +` pas de données sur le nombre de calories` : ` Energie : ` + product.energy + ` Kcal`}"
+            android:text="@{product.energy == null ? ` Energie : ` +` pas de données sur le nombre de calories` : ` Energie : ` + product.energy + ` Kj`}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/detail_kcal_text" />
 
