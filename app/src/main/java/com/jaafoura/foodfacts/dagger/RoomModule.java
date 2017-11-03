@@ -21,6 +21,7 @@ public class RoomModule {
 
   public RoomModule(Application mApplication) {
     foodFactsDatabase = Room.databaseBuilder(mApplication, FoodFactsDatabase.class, "food-db")
+        .fallbackToDestructiveMigration() // migration from version of database with destruct data because we have occurrence, in other case we use migration schema
         .build();
   }
 
