@@ -1,6 +1,7 @@
 
 package com.jaafoura.foodfacts.model;
 
+import android.text.Html;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -53,4 +54,24 @@ public class Product {
   public void setProductNameEn(String productNameEn) {
     this.productNameEn = productNameEn;
   }
+
+  public String getProductName() {
+    if (productNameFr != null && !productNameFr.isEmpty()) {
+      return String.valueOf(Html.fromHtml(productNameFr));
+    }
+
+    if (productNameEn != null && !productNameEn.isEmpty()) {
+      return String.valueOf(Html.fromHtml(productNameEn));
+    }
+    return null;
+  }
+
+  public String getEnergy() {
+    if (nutriments != null) {
+      return nutriments.getEnergy100g();
+    } else {
+      return null;
+    }
+  }
+
 }

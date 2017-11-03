@@ -41,6 +41,7 @@ public class FoodFactsRepositoryImp implements FoodFactsRepository {
       @Override
       public void onFailure(Call<ResponseEntity> call, Throwable t) {
         Log.d("error : ", call.toString());
+        liveData.setValue(null);
       }
     });
     return liveData;

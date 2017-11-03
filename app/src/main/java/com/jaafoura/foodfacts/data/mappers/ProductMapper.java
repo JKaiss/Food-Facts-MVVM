@@ -1,6 +1,7 @@
 package com.jaafoura.foodfacts.data.mappers;
 
 import android.support.annotation.NonNull;
+import android.text.Html;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.model.Product;
 import javax.inject.Inject;
@@ -26,20 +27,13 @@ public class ProductMapper extends BaseDataMapper<Product, ProductDB> {
   @Override
   public ProductDB createObject(@NonNull Product sourceObject) {
     if (sourceObject != null
-        && sourceObject.getCode() != null
-        && sourceObject.getImageUrl() != null
-        && sourceObject.getIngredientsText() != null
-        && (sourceObject.getProductNameFr() != null || sourceObject.getProductNameEn() != null)
-        && sourceObject.getNutriments() != null) {
+        && sourceObject.getCode() != null) {
       return new ProductDB(sourceObject.getCode(), sourceObject.getImageUrl(),
           sourceObject.getIngredientsText(),
-          sourceObject.getProductNameFr().isEmpty() ? sourceObject.getProductNameEn()
-              : sourceObject.getProductNameFr(), // If fr name is empty set the En name
-          sourceObject.getNutriments().getEnergy100g());
+          sourceObject.getProductName(),
+          sourceObject.getEnergy());
     } else {
       return null;
     }
-
-
   }
 }
