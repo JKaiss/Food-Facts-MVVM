@@ -18,6 +18,7 @@ import javax.inject.Inject;
 public class HistoryViewModel extends ViewModel {
 
   private final ProductRepository mProductRepository;
+  private MutableLiveData<List<ProductDB>> liveData;
 
   @Inject
   public HistoryViewModel(ProductRepository mProductRepository) {
@@ -26,7 +27,10 @@ public class HistoryViewModel extends ViewModel {
 
   public LiveData<List<ProductDB>> getProducts(LifecycleOwner owner) {
     // Product live data will recieve the data
-    final MutableLiveData<List<ProductDB>> liveData = new MutableLiveData<>();
+    if (liveData != null) {
+      return liveData;
+    }
+    liveData = new MutableLiveData<>();
     mProductRepository.findAll().observe(owner, new Observer<List<ProductDB>>() {
       @Override
       public void onChanged(@Nullable List<ProductDB> productDBS) {
