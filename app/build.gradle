@@ -65,4 +65,8 @@ dependencies {
     compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
     compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$libs.roomLifecycleVersion"
+
+    // bar code scanner
+    compile 'me.dm7.barcodescanner:zxing:1.9.8'
+    compile 'me.dm7.barcodescanner:zbar:1.9.8'
 }
