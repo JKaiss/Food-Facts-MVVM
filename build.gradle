@@ -21,7 +21,10 @@ ext {
                  constraintLayout    : "1.0.2",
                  mockitoVersion      : "2.0.5-beta",
                  archVersion         : "1.0.0-rc1",
-                 roomLifecycleVersion: "1.0.0-rc1"]
+                 roomLifecycleVersion: "1.0.0-rc1",
+                 leakCanary              : "1.5.4"
+
+    ]
 
     keystore = [keyPassword  : "",
                 storePassword: "",
