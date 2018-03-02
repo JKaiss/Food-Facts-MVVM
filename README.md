@@ -15,13 +15,14 @@ Implementing MVVM Architecture (Room, Dagger 2 , Livedata, databinding, Picasso,
 
 - Utilisation de Android Databinding pour le binding des views.
 
+- Mise en place de Google visio Api ou Zxing pour la lecture du code a bar par caméra
+
+- Intégration de leakcanary : détection des fuites mémoires
+
 2 - Outils et librairies Utilisés : Android Studio 3, Git, Livedata, LifeCycle, Retrofit 2, Okhttp, Databinding, Dagger 2, Room  
 
 3 - Proposition des nouvelles fonctionnalités :
 
-- Mise en place de Google visio Api ou Zxing pour la lecture du code a bar par caméra
-
-- Intégration de leakcanary : détection des fuites mémoires
 
 - Intégration de reboelectric : tests unitaires sur UI
 
