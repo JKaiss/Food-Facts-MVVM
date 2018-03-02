@@ -69,4 +69,8 @@ dependencies {
     // bar code scanner
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
     compile 'me.dm7.barcodescanner:zbar:1.9.8'
+
+    // LeakCanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$libs.leakCanary"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$libs.leakCanary"
 }
