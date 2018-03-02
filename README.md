@@ -27,3 +27,5 @@ Implementing MVVM Architecture (Room, Dagger 2 , Livedata, databinding, Picasso,
 - Intégration de reboelectric : tests unitaires sur UI
 
 - Migration vers Kotlin
+
+- Utiliser "Repository" pour verifier si la data est dans la base sinon la fetcher du API
