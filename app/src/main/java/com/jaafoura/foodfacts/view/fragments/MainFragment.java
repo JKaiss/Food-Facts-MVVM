@@ -1,5 +1,7 @@
 package com.jaafoura.foodfacts.view.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.arch.lifecycle.LifecycleFragment;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
@@ -9,9 +11,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.FloatingSearchView.OnSearchListener;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.jaafoura.foodfacts.R;
@@ -21,6 +25,7 @@ import com.jaafoura.foodfacts.databinding.FragmentMainBinding;
 import com.jaafoura.foodfacts.repository.ProductRepository;
 import com.jaafoura.foodfacts.view.activities.DetailsActivity;
 import com.jaafoura.foodfacts.view.activities.HistoryActivity;
+import com.jaafoura.foodfacts.view.activities.ScanActivity;
 import com.jaafoura.foodfacts.view.adapters.ProductAdapter;
 import com.jaafoura.foodfacts.view.adapters.ProductAdapter.OnItemClickListener;
 import com.jaafoura.foodfacts.viewmodel.ProductViewModel;
@@ -32,6 +37,9 @@ import javax.inject.Inject;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends LifecycleFragment {
+
+  private static final int SCAN_BARCODE_REQUEST = 18;
+  public static final String EXTRA_SCAN_BARCODE =  "extra_scan_barcode";
 
   // region Properties
 
@@ -102,6 +110,21 @@ public class MainFragment extends LifecycleFragment {
       }
     });
 
+    viewDataBinding.floatingSearchView
+        .setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
+          /**
+           * Called when a menu item in has been
+           * selected.
+           *
+           * @param item the selected menu item.
+           */
+          @Override
+          public void onActionMenuItemSelected(MenuItem item) {
+            showScanner();
+          }
+
+        });
+
     // Fab click for history
     viewDataBinding.fab.setOnClickListener(new OnClickListener() {
       @Override
@@ -119,6 +142,11 @@ public class MainFragment extends LifecycleFragment {
   private void getHistory() {
     Intent intent = new Intent(getActivity(), HistoryActivity.class);
     getActivity().startActivity(intent);
+  }
+
+  private void showScanner() {
+    Intent intent = new Intent(getActivity(), ScanActivity.class);
+    startActivityForResult(intent, SCAN_BARCODE_REQUEST);
   }
 
   private void getProduct(String currentQuery) {
@@ -144,6 +172,22 @@ public class MainFragment extends LifecycleFragment {
             }
           }
         });
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    // Check which request we're responding to
+    if (requestCode == SCAN_BARCODE_REQUEST) {
+      // Make sure the request was successful
+      if (resultCode == RESULT_OK) {
+        // The user picked a contact.
+        // The Intent's data Uri identifies which contact was selected.
+        if (data != null) {
+          getProduct(data.getStringExtra(EXTRA_SCAN_BARCODE));
+        }
+        // Do something with the contact here (bigger example below)
+      }
+    }
   }
 
   // endregion

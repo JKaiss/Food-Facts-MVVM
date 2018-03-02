@@ -14,11 +14,11 @@ public class ProductDB {
 
   @NonNull
   @PrimaryKey
-  String code;
-  String imageUrl;
-  String ingredientsText;
-  String productNameFr;
-  String energy;
+  private String code;
+  private String imageUrl;
+  private String ingredientsText;
+  private String productNameFr;
+  private String energy;
 
   public ProductDB(String code, String imageUrl, String ingredientsText,
       String productNameFr, String energy) {
