@@ -7,7 +7,6 @@ def key = rootProject.ext.keystore
 
 android {
     compileSdkVersion cfg.compileVersion
-    buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
         applicationId cfg.package
         minSdkVersion cfg.minSdk
@@ -25,6 +24,7 @@ android {
     dataBinding {
         enabled = true;
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -40,35 +40,35 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${libs.espresso}"
 
     // Dagger
-    compile "com.google.dagger:dagger:${libs.dagger}"
+    implementation "com.google.dagger:dagger:${libs.dagger}"
     annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
 
     // Retrofit
-    compile "com.squareup.retrofit2:retrofit:${libs.retrofit}"
-    compile "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
 
     // Okhttp
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     // Floating SearchView
-    compile 'com.github.arimorty:floatingsearchview:2.1.1'
+    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
 
     // Lifecycle
-    compile "android.arch.lifecycle:extensions:${libs.archVersion}"
+    implementation "android.arch.lifecycle:extensions:${libs.archVersion}"
     annotationProcessor "android.arch.lifecycle:compiler:${libs.archVersion}"
 
     // Picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // Persistance Room
-    compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
-    compile "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
+    implementation "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
+    implementation "android.arch.persistence.room:runtime:$libs.roomLifecycleVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$libs.roomLifecycleVersion"
 
     // bar code scanner
-    compile 'me.dm7.barcodescanner:zxing:1.9.8'
-    compile 'me.dm7.barcodescanner:zbar:1.9.8'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+    implementation 'me.dm7.barcodescanner:zbar:1.9.8'
 
     // LeakCanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$libs.leakCanary"
