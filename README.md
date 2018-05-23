@@ -24,7 +24,7 @@ Implementing MVVM Architecture (Room, Dagger 2 , Livedata, databinding, Picasso,
 3 - Proposition des nouvelles fonctionnalités :
 
 
-- Intégration de reboelectric : tests unitaires sur UI
+- Intégration de Robolectric : tests unitaires sur UI
 
 - Migration vers Kotlin
 
