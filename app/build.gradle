@@ -1,3 +1,4 @@
+
 apply plugin: 'com.android.application'
 
 // Get all versions from gradle of the project
@@ -22,9 +23,8 @@ android {
         }
     }
     dataBinding {
-        enabled = true;
+        enabled = true
     }
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -74,3 +74,4 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$libs.leakCanary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$libs.leakCanary"
 }
+
