@@ -11,4 +11,12 @@
   <dimen name="margin_text">24dp</dimen>
   <dimen name="detail_name_text">24sp</dimen>
   <dimen name="detail_name_text_margin_top">16dp</dimen>
+  <!-- typical spacing between two views -->
+  <dimen name="spacing_larger">32dp</dimen>
+  <dimen name="spacing_large">24dp</dimen>
+  <dimen name="spacing_normal">14dp</dimen>
+  <dimen name="spacing_small">10dp</dimen>
+  <dimen name="spacing_tiny">4dp</dimen>
+  <dimen name="activity_horizontal_margin">64dp</dimen>
+  <dimen name="horizontal_margin">64dp</dimen>
 </resources>

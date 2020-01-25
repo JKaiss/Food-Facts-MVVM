@@ -19,14 +19,18 @@ public class ProductDB {
   private String ingredientsText;
   private String productNameFr;
   private String energy;
+  private String nutriScore;
+  private String environmentImpactLevelTags;
 
   public ProductDB(String code, String imageUrl, String ingredientsText,
-      String productNameFr, String energy) {
+      String productNameFr, String energy, String nutriScore, String environmentImpactLevelTags) {
     this.code = code;
     this.imageUrl = imageUrl;
     this.ingredientsText = ingredientsText;
     this.productNameFr = productNameFr;
     this.energy = energy;
+    this.nutriScore = nutriScore;
+    this.environmentImpactLevelTags = environmentImpactLevelTags;
   }
 
   public String getCode() {
@@ -67,5 +71,21 @@ public class ProductDB {
 
   public void setEnergy(String energy) {
     this.energy = energy;
+  }
+
+  public String getNutriScore() {
+    return nutriScore;
+  }
+
+  public void setNutriScore(String nutriScore) {
+    this.nutriScore = nutriScore;
+  }
+
+  public String getEnvironmentImpactLevelTags() {
+    return environmentImpactLevelTags;
+  }
+
+  public void setEnvironmentImpactLevelTags(String environmentImpactLevelTags) {
+    this.environmentImpactLevelTags = environmentImpactLevelTags;
   }
 }

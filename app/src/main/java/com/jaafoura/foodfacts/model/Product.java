@@ -26,6 +26,12 @@ public class Product {
   @SerializedName("image_url")
   @Expose
   private String imageUrl;
+  @SerializedName("nutrition_grade_fr")
+  @Expose
+  private String nutritionGradeFr;
+  @SerializedName("environment_impact_level_tags")
+  @Expose
+  private List<String> environmentImpactLevelTags;
 
   public String getCode() {
     return code;
@@ -66,6 +72,14 @@ public class Product {
     return null;
   }
 
+  public String getNutritionGradeFr() {
+    return nutritionGradeFr;
+  }
+
+  public void setNutritionGradeFr(String nutritionGradeFr) {
+    this.nutritionGradeFr = nutritionGradeFr;
+  }
+
   public String getEnergy() {
     if (nutriments != null) {
       return nutriments.getEnergy100g();
@@ -74,4 +88,11 @@ public class Product {
     }
   }
 
+  public List<String> getEnvironmentImpactLevelTags() {
+    return environmentImpactLevelTags;
+  }
+
+  public void setEnvironmentImpactLevelTags(List<String> environmentImpactLevelTags) {
+    this.environmentImpactLevelTags = environmentImpactLevelTags;
+  }
 }

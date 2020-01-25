@@ -13,7 +13,7 @@ import com.jaafoura.foodfacts.data.ProductDao;
 @Database(entities = {ProductDB.class}, version = FoodFactsDatabase.VERSION)
 public abstract class FoodFactsDatabase extends RoomDatabase {
 
-  static final int VERSION = 2; // version of database
+  static final int VERSION = 4; // version of database
 
   public abstract ProductDao getProductDao();
 
