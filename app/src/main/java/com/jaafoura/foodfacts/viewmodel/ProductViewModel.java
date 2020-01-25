@@ -1,22 +1,18 @@
 package com.jaafoura.foodfacts.viewmodel;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.databinding.BindingAdapter;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.databinding.BindingAdapter;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.jaafoura.foodfacts.R;
 import com.jaafoura.foodfacts.data.ProductDB;
-import com.jaafoura.foodfacts.data.mappers.ProductMapper;
-import com.jaafoura.foodfacts.model.Product;
 import com.jaafoura.foodfacts.repository.FoodFactsRepository;
 import com.jaafoura.foodfacts.repository.ProductRepository;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;

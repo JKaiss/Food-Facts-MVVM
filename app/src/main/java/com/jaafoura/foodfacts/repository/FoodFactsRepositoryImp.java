@@ -1,13 +1,13 @@
 package com.jaafoura.foodfacts.repository;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import android.util.Log;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.data.mappers.ProductMapper;
 import com.jaafoura.foodfacts.model.ResponseEntity;
 import com.jaafoura.foodfacts.network.FoodFactsApi;
-import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,11 +1,11 @@
 package com.jaafoura.foodfacts.viewmodel;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.annotation.Nullable;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.repository.ProductRepository;
 import java.util.List;

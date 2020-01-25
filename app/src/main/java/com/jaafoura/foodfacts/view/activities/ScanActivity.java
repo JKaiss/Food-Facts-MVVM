@@ -1,12 +1,12 @@
 package com.jaafoura.foodfacts.view.activities;
 
-import android.arch.lifecycle.LifecycleActivity;
-import android.arch.lifecycle.Observer;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import android.content.DialogInterface;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialog;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +24,7 @@ import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
 
-public class ScanActivity extends LifecycleActivity implements ZBarScannerView.ResultHandler {
+public class ScanActivity extends AppCompatActivity implements ZBarScannerView.ResultHandler {
 
     private FragmentProductSheetBinding viewDataBinding;
     private ZBarScannerView mScannerView;
