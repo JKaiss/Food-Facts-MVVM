@@ -1,7 +1,7 @@
 package com.jaafoura.foodfacts.data.mappers;
 
-import android.support.annotation.NonNull;
-import android.text.Html;
+import androidx.annotation.NonNull;
+
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.model.Product;
 import javax.inject.Inject;

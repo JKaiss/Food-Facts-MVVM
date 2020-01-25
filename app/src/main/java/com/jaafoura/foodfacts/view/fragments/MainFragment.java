@@ -2,14 +2,13 @@ package com.jaafoura.foodfacts.view.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.arch.lifecycle.LifecycleFragment;
-import android.arch.lifecycle.Observer;
+import androidx.lifecycle.Observer;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +35,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends LifecycleFragment {
+public class MainFragment extends Fragment {
 
   private static final int SCAN_BARCODE_REQUEST = 18;
   public static final String EXTRA_SCAN_BARCODE =  "extra_scan_barcode";
@@ -73,8 +72,7 @@ public class MainFragment extends LifecycleFragment {
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     //get the databinding from the layout
-    this.viewDataBinding =
-        DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
+    this.viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
     return viewDataBinding.getRoot();
   }
 

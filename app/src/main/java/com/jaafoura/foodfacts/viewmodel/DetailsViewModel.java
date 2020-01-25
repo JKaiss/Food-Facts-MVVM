@@ -1,17 +1,17 @@
 package com.jaafoura.foodfacts.viewmodel;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
-import android.databinding.BindingAdapter;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.databinding.BindingAdapter;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.repository.ProductRepository;
 import com.squareup.picasso.Picasso;
-import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -37,19 +37,5 @@ public class DetailsViewModel extends ViewModel {
       }
     });
     return liveData;
-  }
-
-  @BindingAdapter({"bind:imageUrl"})
-  public static void loadImage(ImageView view, String imageUrl) {
-    if (imageUrl != null && !imageUrl.isEmpty()) {
-      Picasso.with(view.getContext())
-          .load(imageUrl)
-          .placeholder(android.R.drawable.ic_dialog_alert)
-          .into(view);
-    } else {
-      Picasso.with(view.getContext())
-          .load(android.R.drawable.ic_dialog_alert)
-          .into(view);
-    }
   }
 }

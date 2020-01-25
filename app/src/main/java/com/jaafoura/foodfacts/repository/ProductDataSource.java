@@ -1,10 +1,10 @@
 package com.jaafoura.foodfacts.repository;
 
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.data.ProductDao;
-import com.jaafoura.foodfacts.model.Product;
+
 import java.util.List;
 import javax.inject.Inject;
 

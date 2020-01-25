@@ -1,7 +1,7 @@
 package com.jaafoura.foodfacts.dagger;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import com.jaafoura.foodfacts.data.ProductDao;
 import com.jaafoura.foodfacts.repository.FoodFactsDatabase;
 import com.jaafoura.foodfacts.repository.ProductDataSource;

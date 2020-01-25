@@ -1,7 +1,7 @@
 package com.jaafoura.foodfacts.view.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.jaafoura.foodfacts.R;
 import com.jaafoura.foodfacts.view.fragments.MainFragment;

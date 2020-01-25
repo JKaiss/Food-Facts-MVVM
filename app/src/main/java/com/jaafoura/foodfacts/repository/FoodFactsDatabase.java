@@ -1,8 +1,8 @@
 package com.jaafoura.foodfacts.repository;
 
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.data.ProductDao;
 
