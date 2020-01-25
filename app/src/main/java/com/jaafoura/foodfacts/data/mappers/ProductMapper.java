@@ -31,7 +31,8 @@ public class ProductMapper extends BaseDataMapper<Product, ProductDB> {
       return new ProductDB(sourceObject.getCode(), sourceObject.getImageUrl(),
           sourceObject.getIngredientsText(),
           sourceObject.getProductName(),
-          sourceObject.getEnergy());
+          sourceObject.getEnergy(),
+          sourceObject.getNutritionGradeFr(), sourceObject.getEnvironmentImpactLevelTags() == null ? "" : sourceObject.getEnvironmentImpactLevelTags().get(0).replace("\"", ""));
     } else {
       return null;
     }

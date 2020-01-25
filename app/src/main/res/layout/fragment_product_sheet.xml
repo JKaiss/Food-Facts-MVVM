@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+                <variable
+                    name="product"
+                    type="com.jaafoura.foodfacts.data.ProductDB" />
+
+        </data>
+<android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/quickView_image"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{product.imageUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/quickView_nutriScore"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/ic_co2_high_24dp" />
+
+        <ProgressBar
+            android:id="@+id/quickView_imageProgress"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:visibility="visible"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+
+        <ImageView
+            android:id="@+id/quickView_nutriScore"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            app:imageGrade="@{product.nutriScore}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/quickView_additives"
+            app:layout_constraintStart_toEndOf="@+id/quickView_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/nnc_a" />
+
+        <ImageView
+            android:id="@+id/quickView_novaGroup"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@id/quickView_additives"
+            app:layout_constraintEnd_toEndOf="@id/quickView_additives"
+            app:layout_constraintStart_toStartOf="@+id/quickView_additives"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@drawable/ic_nova_group_1"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/quickView_co2_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageEnvironmentImpact="@{product.environmentImpactLevelTags}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/quickView_additives"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@drawable/ic_co2_high_24dp" />
+
+        <TextView
+            android:id="@+id/quickView_additives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/quickView_co2_icon"
+            app:layout_constraintStart_toEndOf="@+id/quickView_nutriScore"
+            app:layout_constraintTop_toBottomOf="@id/quickView_novaGroup"
+            tools:text="3 additives" />
+</android.support.constraint.ConstraintLayout>
+</layout>

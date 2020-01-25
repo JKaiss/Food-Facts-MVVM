@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.jaafoura.foodfacts.BaseApplication;
 import com.jaafoura.foodfacts.view.activities.DetailsActivity;
 import com.jaafoura.foodfacts.view.activities.HistoryActivity;
+import com.jaafoura.foodfacts.view.activities.ScanActivity;
 import com.jaafoura.foodfacts.view.fragments.MainFragment;
 import dagger.Component;
 import javax.inject.Singleton;
@@ -26,5 +27,7 @@ public abstract class AppComponent {
   public abstract void inject(HistoryActivity historyActivity);
 
   public abstract void inject(DetailsActivity detailsActivity);
+
+  public abstract void inject(ScanActivity scanActivity);
 
 }

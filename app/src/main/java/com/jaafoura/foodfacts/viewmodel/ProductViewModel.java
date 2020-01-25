@@ -6,12 +6,19 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.BindingAdapter;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.jaafoura.foodfacts.R;
 import com.jaafoura.foodfacts.data.ProductDB;
 import com.jaafoura.foodfacts.data.mappers.ProductMapper;
+import com.jaafoura.foodfacts.model.Product;
 import com.jaafoura.foodfacts.repository.FoodFactsRepository;
 import com.jaafoura.foodfacts.repository.ProductRepository;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 /**
@@ -66,10 +73,68 @@ public class ProductViewModel extends ViewModel {
           .load(imageUrl)
           .placeholder(android.R.drawable.ic_dialog_alert)
           .into(view);
-    } else {
-      Picasso.with(view.getContext())
-          .load(android.R.drawable.ic_dialog_alert)
-          .into(view);
     }
+  }
+  public static final int NO_DRAWABLE_RESOURCE = 0;
+
+  @BindingAdapter({"bind:imageGrade"})
+  public static void getImageGrade(ImageView view, String grade) {
+    int drawable = NO_DRAWABLE_RESOURCE;
+
+    if(grade == null){
+      return;
+    }
+
+    switch (grade.toLowerCase(Locale.getDefault())) {
+      case "a":
+        drawable = R.drawable.nnc_a;
+        break;
+      case "b":
+        drawable = R.drawable.nnc_b;
+        break;
+      case "c":
+        drawable = R.drawable.nnc_c;
+        break;
+      case "d":
+        drawable = R.drawable.nnc_d;
+        break;
+      case "e":
+        drawable = R.drawable.nnc_e;
+        break;
+      default:
+        break;
+    }
+
+    Picasso.with(view.getContext())
+            .load(drawable)
+            .placeholder(android.R.drawable.ic_dialog_alert)
+            .into(view);
+  }
+  @BindingAdapter({"bind:imageEnvironmentImpact"})
+  public static void getImageEnvironmentImpact(ImageView view , String environmentImpact) {
+    int drawable = NO_DRAWABLE_RESOURCE;
+    if (environmentImpact == null) {
+      return;
+    }
+    if (environmentImpact.isEmpty()) {
+
+      return;
+    }
+    switch (environmentImpact) {
+      case "en:high":
+        drawable = R.drawable.ic_co2_high_24dp;
+        break;
+      case "en:low":
+        drawable = R.drawable.ic_co2_low_24dp;
+        break;
+      case "en:medium":
+        drawable = R.drawable.ic_co2_medium_24dp;
+        break;
+      default:
+    }
+    Picasso.with(view.getContext())
+            .load(drawable)
+            .placeholder(android.R.drawable.ic_dialog_alert)
+            .into(view);
   }
 }
